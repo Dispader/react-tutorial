@@ -7,6 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
   </head>
   <body>
     <div id="content"></div>
@@ -14,10 +15,11 @@
 
 var Comment = React.createClass({
   render: function() {
+    var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
     return (
       <div className="comment">
         <h2 className="commentAuthor">{this.props.author}</h2>
-        {this.props.children}
+        <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
       </div>
     );
   }
@@ -26,8 +28,8 @@ var CommentList = React.createClass({
   render: function() {
     return (
       <div className="commentList">
-        <Comment author="Niels Bohr">An expert is a person who has made all the mistakes that can be made in a very narrow field.</Comment>
-        <Comment author="Albert Einstein">Education is what remains after one has forgotten what one has learned in school.</Comment>
+        <Comment author="Niels Bohr">An *expert* is a person who has made all the mistakes that can be made in a very narrow field.</Comment>
+        <Comment author="Albert Einstein">*Education* is what remains after one has forgotten what one has learned in school.</Comment>
       </div>
     );
   }
