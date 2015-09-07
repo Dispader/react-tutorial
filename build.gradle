@@ -1,7 +1,16 @@
 plugins {
+    id 'build-announcements'
     id 'eclipse'
+    id 'groovy'
+    id 'project-report'
     id 'war'
     id 'org.akhikhl.gretty' version '1.2.4'
 }
 
 repositories { mavenCentral() }
+
+dependencies {
+	compile 'org.codehaus.groovy:groovy-all:2.3.10'
+	compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.21'
+	compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.21'
+}

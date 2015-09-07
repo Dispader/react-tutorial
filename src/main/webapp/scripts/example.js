@@ -59,7 +59,7 @@ var CommentBox = React.createClass({
   handleCommentSubmit: function(comment) {
     $.ajax({
       url: this.props.url,
-      dataType: 'jsonp',
+      dataType: 'json',
       type: 'POST',
       data: comment,
       success: function(data) {
